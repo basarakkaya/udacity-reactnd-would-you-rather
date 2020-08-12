@@ -7,13 +7,11 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <ul>
-          {this.props.questionIds.map((id) => (
-            <li key={id}>
-              <Question id={id} />
-            </li>
-          ))}
-        </ul>
+        {this.props.questionIds.length > 0 ? (
+          this.props.questionIds.map((id) => <Question id={id} key={id} />)
+        ) : (
+          <h5>No questions found to be listed.</h5>
+        )}
       </div>
     );
   }
