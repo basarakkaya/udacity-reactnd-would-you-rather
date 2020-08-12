@@ -10,7 +10,6 @@ class QuestionsContainer extends Component {
   render() {
     return (
       <div>
-        <h3>Would You Rather...?</h3>
         <Card>
           <Card.Header>
             <Nav

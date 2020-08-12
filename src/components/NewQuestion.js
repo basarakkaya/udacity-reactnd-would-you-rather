@@ -52,7 +52,7 @@ class NewQuestion extends Component {
 
     return (
       <div>
-        <h3>New Question</h3>
+        <h3>Would you rather...</h3>
         <form onSubmit={this.createQuestion}>
           <Input
             label="Option #1"

@@ -21,7 +21,7 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
-          <LoadingBar />
+          <LoadingBar style={{ zIndex: 100 }} />
           <Navigation />
           <div className="container">
             {this.props.authed ? (

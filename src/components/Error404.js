@@ -1,10 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
+import { withRouter } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
-class Error404 extends Component {
-  // TODO: Stylize & add redirect button
-  render() {
-    return <div>Error404</div>;
-  }
+function Error404({ history }) {
+  return (
+    <React.Fragment>
+      <h2>404 - The page you requested cannot be found.</h2>
+      <Button onClick={() => history.push("/")} style={{ width: "100%" }}>
+        Return to Home
+      </Button>
+    </React.Fragment>
+  );
 }
 
-export default Error404;
+export default withRouter(Error404);

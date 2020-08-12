@@ -1,10 +1,12 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import ListGroup from "react-bootstrap/ListGroup";
 import ListGroupItem from "react-bootstrap/ListGroupItem";
+import Avatar from "./Avatar";
 import { PersonCheckFill } from "react-bootstrap-icons";
 
 import { handleAnswerQuestion } from "../actions/questions";
@@ -43,11 +45,10 @@ class Question extends Component {
   };
 
   render() {
-    const { authedUser, isAnswered, question } = this.props;
+    const { authedUser, displayOnly, isAnswered, question, users } = this.props;
     let optionOneInfo, optionTwoInfo;
 
     if (isAnswered) {
-      // TODO: Indicate the answered option
       const totalVotes =
         question.optionOne.votes.length + question.optionTwo.votes.length;
 
@@ -70,9 +71,26 @@ class Question extends Component {
 
     return (
       <Card style={{ margin: "4px 0px" }}>
-        <Card.Header>Asked by {question.author}</Card.Header>
+        <Card.Header>
+          Asked by {question.author} <Avatar user={users[question.author]} />
+        </Card.Header>
         <Card.Body>
-          {isAnswered ? (
+          <h4>Would you rather...</h4>
+          {displayOnly ? (
+            <React.Fragment>
+              <p>
+                {question.optionOne.text} ...or... {question.optionTwo.text}?
+              </p>
+              <Button variant="primary">
+                <Link
+                  to={`/questions/${question.id}`}
+                  style={{ textDecoration: "none", color: "#fff" }}
+                >
+                  Go To Question
+                </Link>
+              </Button>
+            </React.Fragment>
+          ) : isAnswered ? (
             <ListGroup>
               <OptionResult
                 option={question.optionOne}
@@ -102,13 +120,14 @@ class Question extends Component {
               </Button>
             </React.Fragment>
           )}
+          {}
         </Card.Body>
       </Card>
     );
   }
 }
 
-function mapStateToProps({ authedUser, questions }, { id }) {
+function mapStateToProps({ authedUser, questions, users }, { id }) {
   const question = questions[id];
   return {
     authedUser,
@@ -116,6 +135,7 @@ function mapStateToProps({ authedUser, questions }, { id }) {
     isAnswered:
       question.optionOne.votes.includes(authedUser) ||
       question.optionTwo.votes.includes(authedUser),
+    users,
   };
 }
 
