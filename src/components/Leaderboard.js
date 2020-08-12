@@ -8,11 +8,9 @@ class Leaderboard extends Component {
     return (
       <div>
         <h3>Leaderboard</h3>
-        <ul>
-          {this.props.users.map((user) => (
-            <User user={user} key={user.id} />
-          ))}
-        </ul>
+        {this.props.users.map((user) => (
+          <User user={user} key={user.id} />
+        ))}
       </div>
     );
   }

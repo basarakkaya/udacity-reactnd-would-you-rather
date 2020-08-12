@@ -6,7 +6,7 @@ function User({ user }) {
   const answers = Object.keys(user.answers).length;
   // TODO: add user avatar
   return (
-    <Card style={{ margin: 4 }}>
+    <Card style={{ margin: "4px 0px" }}>
       <Card.Body>
         <Card.Title>{user.name}</Card.Title>
         <Card.Subtitle>{user.id}</Card.Subtitle>

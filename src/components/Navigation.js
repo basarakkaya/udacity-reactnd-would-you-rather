@@ -60,13 +60,13 @@ class Navigation extends Component {
                     Leaderboard
                   </Link>
                 </Nav.Link>
-                <Nav.Link as="div">
-                  <Link className="nav-link" to="/" onClick={this.logout}>
-                    Logout
-                  </Link>
-                </Nav.Link>
               </Nav>
               <Navbar.Text>Signed in as: {this.props.authedUser}</Navbar.Text>
+              <Nav.Link as="div">
+                <Link className="nav-link" to="/" onClick={this.logout}>
+                  Logout
+                </Link>
+              </Nav.Link>
             </Navbar.Collapse>
           </React.Fragment>
         ) : null}
