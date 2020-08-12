@@ -15,6 +15,7 @@ class Question extends Component {
     const { isAnswered, question } = this.props;
 
     if (isAnswered) {
+      // TODO: Indicate the answered option
       const totalVotes =
         question.optionOne.votes.length + question.optionTwo.votes.length;
 

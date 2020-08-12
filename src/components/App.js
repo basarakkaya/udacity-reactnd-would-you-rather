@@ -18,34 +18,30 @@ class App extends Component {
   }
 
   render() {
-    if (this.props.authed) {
-      return (
-        <Router>
-          <Fragment>
-            <LoadingBar />
-            <div className="router-container">
-              {this.props.loading ? null : (
-                <div>
-                  <Navigation />
-                  <Switch>
-                    <Route exact path="/" component={QuestionsContainer} />
-                    <Route path="/leaderboard" component={Leaderboard} />
-                    <Route path="/add" component={NewQuestion} />
-                    <Route
-                      path="/questions/:question_id"
-                      component={QuestionPage}
-                    />
-                    <Route path="*" component={Error404} />
-                  </Switch>
-                </div>
-              )}
-            </div>
-          </Fragment>
-        </Router>
-      );
-    } else {
-      return <Login />;
-    }
+    return (
+      <Router>
+        <Fragment>
+          <LoadingBar />
+          <div className="router-container">
+            <Navigation />
+            {this.props.authed ? (
+              <Switch>
+                <Route exact path="/" component={QuestionsContainer} />
+                <Route path="/leaderboard" component={Leaderboard} />
+                <Route path="/add" component={NewQuestion} />
+                <Route
+                  path="/questions/:question_id"
+                  component={QuestionPage}
+                />
+                <Route path="*" component={Error404} />
+              </Switch>
+            ) : (
+              <Login />
+            )}
+          </div>
+        </Fragment>
+      </Router>
+    );
   }
 }
 
