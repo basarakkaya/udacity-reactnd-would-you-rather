@@ -7,7 +7,6 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <h3>Would you rather...</h3>
         <ul>
           {this.props.questionIds.map((id) => (
             <li key={id}>

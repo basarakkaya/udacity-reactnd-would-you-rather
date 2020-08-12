@@ -22,8 +22,8 @@ class App extends Component {
       <Router>
         <Fragment>
           <LoadingBar />
-          <div className="router-container">
-            <Navigation />
+          <Navigation />
+          <div className="container">
             {this.props.authed ? (
               <Switch>
                 <Route exact path="/" component={QuestionsContainer} />
